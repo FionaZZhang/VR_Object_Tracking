@@ -6,7 +6,7 @@ public class Logic : MonoBehaviour
 {
 
     // basic lvl info
-    private int numbOfLvls = 4;
+    private int numbOfLvls = 5;
     public int currLvlNumb { private set; get; }
     public int startLvl;
     private bool isLvlCompleted;
@@ -26,6 +26,8 @@ public class Logic : MonoBehaviour
     public VisualFeedback visualFeedback { private set; get; }
     public AudioFeedback audioFeedback { private set; get; }
     public HapticFeedback hapticFeedback { private set; get; }
+    public BrightnessFeedback brightnessFeedback { private set; get; }
+
 
     private void OnEnable()
     {
@@ -40,6 +42,7 @@ public class Logic : MonoBehaviour
         visualFeedback = GameObject.Find("VisualFeedbackObj").GetComponent<VisualFeedback>();
         audioFeedback = GameObject.Find("AudioFeedbackObj").GetComponent<AudioFeedback>();
         hapticFeedback = GameObject.Find("HapticFeedbackObj").GetComponent<HapticFeedback>();
+        brightnessFeedback = GameObject.Find("BrightnessFeedbackObj").GetComponent<BrightnessFeedback>();
     }
 
     void Start()
@@ -93,6 +96,7 @@ public class Logic : MonoBehaviour
         visualFeedback.gameObject.SetActive(false);
         audioFeedback.gameObject.SetActive(false);
         hapticFeedback.gameObject.SetActive(false);
+        brightnessFeedback.gameObject.SetActive(false);
         // enable proper feedback forms
         switch (lvlNumb)
         {
@@ -111,6 +115,9 @@ public class Logic : MonoBehaviour
                 audioFeedback.gameObject.SetActive(true);
                 hapticFeedback.gameObject.SetActive(true);
                 visualFeedback.gameObject.SetActive(true);
+                break;
+            case 5:
+                brightnessFeedback.gameObject.SetActive(true);
                 break;
             default:
                 break;

@@ -9467,6 +9467,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionalLight: {fileID: 705507994}
   IntensityInterval: 2
+  lightPos: {fileID: 705507995}
 --- !u!1001 &1466569420
 PrefabInstance:
   m_ObjectHideFlags: 0

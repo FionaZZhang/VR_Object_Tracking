@@ -7,11 +7,11 @@ public class BrightnessFeedback : MonoBehaviour
     //private static float initialDistance;
     public Light directionalLight;
     public float IntensityInterval;
+    public Transform lightPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        // initialDistance = Logic.distanceToTarget;
         directionalLight.intensity = 1;
     }
 
@@ -23,9 +23,15 @@ public class BrightnessFeedback : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        lightPos.position = new Vector3(-65.028f, 4.41f, 69.42f);
+    }
+
     private void OnDisable()
     {
         directionalLight.intensity = 1;
+        lightPos.position = new Vector3(0, 3, 0);
     }
 }
 

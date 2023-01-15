@@ -6,14 +6,14 @@ public class Logic : MonoBehaviour
 {
 
     // basic lvl info
-    private int numbOfLvls = 5;
+    private int numbOfLvls = 4;
     public int currLvlNumb { private set; get; }
     public int startLvl;
     private bool isLvlCompleted;
     private bool isExperFinished;
 
     private Transform playerTrans;
-    private Transform targetTrans;
+    public Transform targetTrans;
 
     private Vector3 playerStartPos;
 
@@ -31,7 +31,7 @@ public class Logic : MonoBehaviour
 
     private void OnEnable()
     {
-        targetTrans = GameObject.Find("Target").transform;
+        // targetTrans = GameObject.Find("Target").transform;
         playerTrans = GameObject.Find("PlayerObj").transform;
         // experiment target position
         targetPos = targetTrans.position;
@@ -101,22 +101,29 @@ public class Logic : MonoBehaviour
         switch (lvlNumb)
         {
             case 1:
+                targetTrans.position = new Vector3(-4.93f, 5.42f, -60.33f);
+                targetPos = targetTrans.position;
                 visualFeedback.gameObject.SetActive(true);
                 break;
             case 2:
+                targetTrans.position = new Vector3(-67.8f, 3.718f, -29.9f);
+                targetPos = targetTrans.position;
                 visualFeedback.gameObject.SetActive(true);
                 audioFeedback.gameObject.SetActive(true);
                 break;
             case 3:
+                targetTrans.position = new Vector3(-84.8f, 3.718f, -84.8f);
+                targetPos = targetTrans.position;
                 visualFeedback.gameObject.SetActive(true);
+                audioFeedback.gameObject.SetActive(true);
                 hapticFeedback.gameObject.SetActive(true);
                 break;
             case 4:
+                targetTrans.position = new Vector3(-65.028f, 4.41f, 69.42f);
+                targetPos = targetTrans.position;
+                visualFeedback.gameObject.SetActive(true);
                 audioFeedback.gameObject.SetActive(true);
                 hapticFeedback.gameObject.SetActive(true);
-                visualFeedback.gameObject.SetActive(true);
-                break;
-            case 5:
                 brightnessFeedback.gameObject.SetActive(true);
                 break;
             default:

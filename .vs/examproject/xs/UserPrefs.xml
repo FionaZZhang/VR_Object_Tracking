@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{E46D7379-0197-7435-314D-B2C7F25BE0BC}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BrightnessFeedback.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Logic.cs">
     <Files>
+      <File FileName="Assets/Logic.cs" Line="115" Column="73" />
       <File FileName="Assets/AudioFeedback.cs" Line="10" Column="1" />
-      <File FileName="Assets/VisualFeedback.cs" Line="30" Column="1" />
-      <File FileName="Assets/Logic.cs" Line="120" Column="28" />
+      <File FileName="Assets/VisualFeedback.cs" Line="19" Column="9" />
       <File FileName="Assets/BrightnessFeedback.cs" Line="28" Column="39" />
     </Files>
     <Pads>
@@ -16,7 +16,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e10f328b-4459-42f1-9f44-acd55c22a4af" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4025cfba-0419-4c1a-9797-8a252302018f" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

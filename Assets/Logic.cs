@@ -6,16 +6,25 @@ public class Logic : MonoBehaviour
 {
 
     // basic lvl info
-    private int numbOfLvls = 4;
-    public int currLvlNumb { private set; get; }
-    public int startLvl;
+    
     private bool isLvlCompleted;
-    private bool isExperFinished;
 
     private Transform playerTrans;
     public Transform targetTrans;
 
     private Vector3 playerStartPos;
+
+    
+    private float keyLastPressed;
+
+    public int currLvlNumb { private set; get; } = 0;
+    public int presetActive { private set; get; } = 1;
+    public List<int> lvlOrder { private set; get; }
+
+    public bool isExperFinished { private set; get; }
+
+    
+
 
     // static public variables can be accesed from anywhere
     public static float distanceToTarget { private set; get; }
@@ -47,8 +56,8 @@ public class Logic : MonoBehaviour
 
     void Start()
     {   
-        currLvlNumb = startLvl;
-        UpdateFeedbackForm(currLvlNumb);
+        UpdateFeedbackForm(-1);
+        LoadLvlPreset();
     }
 
     // Update is called once per frame
@@ -57,25 +66,23 @@ public class Logic : MonoBehaviour
         //Experiment is finished
         if (isExperFinished) { return; }
 
-        //Current level is finished
-        if(isLvlCompleted)
+        bool isKeyCoolDownOver = (Time.time - keyLastPressed) > 0.6f;
+            
+        // lvl 0 - choosing preset 
+        if(currLvlNumb == 0 && isKeyCoolDownOver)
         {
-            isLvlCompleted = false;
-            //No more levels
-            if (currLvlNumb  > numbOfLvls) 
-            { 
-                isExperFinished = true;
-                UpdateFeedbackForm(-1);
-                return;
-            }
-            // Some levels left to complete
-            else
+            if ( OVRInput.Get((OVRInput.Button)CustomControls.NextPreset) )
             {
-                currLvlNumb += 1;
-                // teleport player to start position
-                playerTrans.position = playerStartPos;
-                UpdateFeedbackForm(currLvlNumb);
+                keyLastPressed = Time.time;
+                presetActive += 1;
+                if (presetActive > 6) { presetActive = 1; }
+                LoadLvlPreset();
             }
+            else if ( OVRInput.Get((OVRInput.Button)CustomControls.ChoosePreset) )
+            {
+                isLvlCompleted = true;
+            }
+
         }
 
         // Update distance and angle to rotate to look at the target 
@@ -85,7 +92,32 @@ public class Logic : MonoBehaviour
         angleToRotTarget = Vector3.Angle(targetOrientation, currentOrientation);
 
         //Close enough to the target - lvl completed
-        if(distanceToTarget < 3f) { isLvlCompleted = true; }
+        if (currLvlNumb > 0 &&  distanceToTarget < 3f) { isLvlCompleted = true; }
+
+        //Current level is finished
+        if(isLvlCompleted)
+        {
+            isLvlCompleted = false;
+            //No more levels
+            if (lvlOrder.Count == 0) 
+            { 
+                isExperFinished = true;
+                UpdateFeedbackForm(-1);
+                return;
+            }
+            // Some levels left to complete
+            else
+            {
+                currLvlNumb = lvlOrder[0];
+                // pop first elem in list
+                lvlOrder.RemoveAt(0);
+                // teleport player to start position
+                playerTrans.position = playerStartPos;
+                UpdateFeedbackForm(currLvlNumb);
+            }
+        }
+
+              
     }
 
     
@@ -108,25 +140,50 @@ public class Logic : MonoBehaviour
             case 2:
                 targetTrans.position = new Vector3(-67.8f, 3.718f, -29.9f);
                 targetPos = targetTrans.position;
-                visualFeedback.gameObject.SetActive(true);
+                //visualFeedback.gameObject.SetActive(true);
                 audioFeedback.gameObject.SetActive(true);
                 break;
             case 3:
                 targetTrans.position = new Vector3(-84.8f, 3.718f, -84.8f);
                 targetPos = targetTrans.position;
-                visualFeedback.gameObject.SetActive(true);
+                //visualFeedback.gameObject.SetActive(true);
                 audioFeedback.gameObject.SetActive(true);
                 hapticFeedback.gameObject.SetActive(true);
                 break;
             case 4:
                 targetTrans.position = new Vector3(-65.028f, 4.41f, 69.42f);
                 targetPos = targetTrans.position;
-                visualFeedback.gameObject.SetActive(true);
+                //visualFeedback.gameObject.SetActive(true);
                 audioFeedback.gameObject.SetActive(true);
                 hapticFeedback.gameObject.SetActive(true);
                 brightnessFeedback.gameObject.SetActive(true);
                 break;
             default:
+                break;
+        }
+    }
+
+    private void LoadLvlPreset()
+    {
+        switch (presetActive)
+        {
+            case 1:
+                lvlOrder = new List<int> { 1, 2, 3, 4 };
+                break;
+            case 2:
+                lvlOrder = new List<int> { 2, 3, 1, 4 };
+                break;
+            case 3:
+                lvlOrder = new List<int> { 3, 1, 4, 2 };
+                break;
+            case 4:
+                lvlOrder = new List<int> { 4, 1, 2, 3 };
+                break;
+            case 5:
+                lvlOrder = new List<int> { 1, 3, 4, 2 };
+                break;
+            case 6:
+                lvlOrder = new List<int> { 2, 4, 1, 3 };
                 break;
         }
     }

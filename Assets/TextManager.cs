@@ -32,11 +32,23 @@ public class TextManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //content.text = Logic.distanceToTarget.ToString();
-
-        content.text = "Current Lvl: "+logic.currLvlNumb.ToString()+ "\n";
-
+        string newContent = "";
+        if (logic.currLvlNumb == 0)
+        {
+            newContent = "Choosing lvl order fase " + "\n";
+            newContent += "Press B button to choose another preset" + "\n";
+            newContent += "Press Y button to confirm preset choice and start" + "\n";
+            newContent += "Current Preset Number: " + logic.presetActive.ToString() + "\n";
+        }
+        else
+        {
+            newContent += "Welcome to Finding Nemo! Follow the different types of hints and find nemo (((: "+"\n";
+            newContent += "Good Luck !";
+        }
         
+
+        content.text = newContent;
+
         // DEBUG CODE - not importnat
         //content.text += "Amplitude: " + HapticFeedback.vibAmplitude.ToString()+ "\n";
         //content.text += "Frequency: " + HapticFeedback.vibFrquency.ToString()+ "\n";

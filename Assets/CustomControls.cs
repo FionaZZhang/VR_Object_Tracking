@@ -7,8 +7,8 @@ public enum CustomControls
     Jump = OVRInput.Button.One,
     TutorialSwitch = OVRInput.Button.Three,
     //
-    amplitude = OVRInput.Button.Two,
-    frequency = OVRInput.Button.Four
+    NextPreset = OVRInput.Button.Two,
+    ChoosePreset = OVRInput.Button.Four
     //Old controls
     //Jump = OVRInput.Button.One,
     //LocoSwitch = OVRInput.Button.Two,

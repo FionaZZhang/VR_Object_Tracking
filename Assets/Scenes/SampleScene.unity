@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.08046738, g: 0.099836275, b: 0.3010121, a: 1}
+  m_IndirectSpecularColor: {r: 0.0799131, g: 0.0999747, b: 0.30085722, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -293,7 +293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce3ee60703566a418be5504937e3f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startLvl: 1
   targetTrans: {fileID: 1958797934}
 --- !u!4 &40919617
 Transform:
@@ -1569,6 +1568,38 @@ MonoBehaviour:
   _headPoseRelativeOffsetRotation: {x: 0, y: 0, z: 0}
   _headPoseRelativeOffsetTranslation: {x: 0, y: 0, z: 0}
   profilerTcpPort: 32419
+  expandMixedRealityCapturePropertySheet: 0
+  enableMixedReality: 0
+  compositionMethod: 0
+  extraHiddenLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  extraVisibleLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  dynamicCullingMask: 1
+  externalCompositionBackdropColorRift: {r: 0, g: 1, b: 0, a: 1}
+  externalCompositionBackdropColorQuest: {r: 0, g: 0, b: 0, a: 0}
+  capturingCameraDevice: 0
+  flipCameraFrameHorizontally: 0
+  flipCameraFrameVertically: 0
+  handPoseStateLatency: 0
+  sandwichCompositionRenderLatency: 0
+  sandwichCompositionBufferedFrames: 8
+  chromaKeyColor: {r: 0, g: 1, b: 0, a: 1}
+  chromaKeySimilarity: 0.6
+  chromaKeySmoothRange: 0.03
+  chromaKeySpillRange: 0.06
+  useDynamicLighting: 0
+  depthQuality: 1
+  dynamicLightingSmoothFactor: 8
+  dynamicLightingDepthVariationClampingValue: 0.001
+  virtualGreenScreenType: 0
+  virtualGreenScreenTopY: 10
+  virtualGreenScreenBottomY: -10
+  virtualGreenScreenApplyDepthCulling: 0
+  virtualGreenScreenDepthTolerance: 0.2
+  mrcActivationMode: 0
   isInsightPassthroughEnabled: 0
   requestBodyTrackingPermissionOnStartup: 0
   requestFaceTrackingPermissionOnStartup: 0
@@ -2869,21 +2900,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: DirArrow
       objectReference: {fileID: 0}
+    - target: {fileID: 1652212050940078, guid: aaa23017b91db8146b548d6a69933a9d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4480047064445580, guid: aaa23017b91db8146b548d6a69933a9d, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4480047064445580, guid: aaa23017b91db8146b548d6a69933a9d, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4.6093297
-      objectReference: {fileID: 0}
-    - target: {fileID: 4480047064445580, guid: aaa23017b91db8146b548d6a69933a9d, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4.2325854
-      objectReference: {fileID: 0}
-    - target: {fileID: 4480047064445580, guid: aaa23017b91db8146b548d6a69933a9d, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4.6093297
       objectReference: {fileID: 0}
     - target: {fileID: 4480047064445580, guid: aaa23017b91db8146b548d6a69933a9d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7083,7 +7106,7 @@ GameObject:
   - component: {fileID: 1035347321}
   - component: {fileID: 1035347320}
   m_Layer: 0
-  m_Name: DirArrow
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7346,7 +7369,7 @@ RectTransform:
   m_GameObject: {fileID: 1114040580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1577749884}
   m_RootOrder: 0
@@ -7354,7 +7377,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.1, y: -0.3}
-  m_SizeDelta: {x: 40, y: 30}
+  m_SizeDelta: {x: 100, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1114040582
 MonoBehaviour:
@@ -7378,18 +7401,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 2
-    m_FontStyle: 1
-    m_BestFit: 1
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Welcome to Finding Nemo! Follow the hints and find nemo (((:'
+  m_Text: 'Welcome to Finding Nemo! Follow the hints and find nemo (((: '
 --- !u!222 &1114040583
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10177,7 +10200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1577749884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10196,7 +10219,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1577749885
 MonoBehaviour:
@@ -10236,7 +10259,7 @@ MonoBehaviour:
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 50
+  m_DynamicPixelsPerUnit: 80
   m_PresetInfoIsWorld: 1
 --- !u!223 &1577749887
 Canvas:
@@ -11785,7 +11808,7 @@ MonoBehaviour:
   HMDRotatesPlayer: 0
   RotationEitherThumbstick: 0
   RotationAngle: 20
-  Speed: 15
+  Speed: 8
   CameraRig: {fileID: 218941604}
 --- !u!114 &1839025338
 MonoBehaviour:

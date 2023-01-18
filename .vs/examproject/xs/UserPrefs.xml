@@ -1,17 +1,20 @@
 ﻿<Properties StartupConfiguration="{E46D7379-0197-7435-314D-B2C7F25BE0BC}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/BrightnessFeedback.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Logic.cs">
     <Files>
-      <File FileName="Assets/Logic.cs" Line="122" Column="77" />
-      <File FileName="Assets/AudioFeedback.cs" />
-      <File FileName="Assets/VisualFeedback.cs" />
-      <File FileName="Assets/BrightnessFeedback.cs" Line="34" Column="50" />
+      <File FileName="Assets/Logic.cs" Line="201" Column="74" />
+      <File FileName="Assets/AudioFeedback.cs" Line="1" Column="1" />
+      <File FileName="Assets/VisualFeedback.cs" Line="1" Column="1" />
+      <File FileName="Assets/BrightnessFeedback.cs" Line="24" Column="42" />
+      <File FileName="Assets/CustomControls.cs" Line="12" Column="35" />
+      <File FileName="Assets/TextManager.cs" Line="60" Column="32" />
+      <File FileName="Assets/TimeLog.cs" Line="66" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="examproject" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="BrightnessFeedback.cs" selected="True" />
+              <Node name="Logic.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -20,7 +23,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4025cfba-0419-4c1a-9797-8a252302018f" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="5a0f4d77-c598-4c89-b4d0-ffa31054090a" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

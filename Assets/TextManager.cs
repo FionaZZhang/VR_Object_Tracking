@@ -13,6 +13,7 @@ public class TextManager : MonoBehaviour
     private Text content;
 
     private Logic logic;
+    private TimeLog timeRecord;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class TextManager : MonoBehaviour
         content = tutorialTxt.GetComponent<Text>();
 
         logic = GameObject.Find("ExperimentLogic").GetComponent<Logic>();
+        timeRecord = GameObject.Find("ExperimentLogic").GetComponent<TimeLog>();
         
     }
 
@@ -33,6 +35,7 @@ public class TextManager : MonoBehaviour
     void Update()
     {
         string newContent = "";
+
         if (logic.currLvlNumb == 0)
         {
             newContent = "Choosing lvl order fase " + "\n";
@@ -40,13 +43,23 @@ public class TextManager : MonoBehaviour
             newContent += "Press Y button to confirm preset choice and start" + "\n";
             newContent += "Current Preset Number: " + logic.presetActive.ToString() + "\n";
         }
-        else
+        else if (logic.isExperFinished)
         {
-            newContent += "Welcome to Finding Nemo! Follow the different types of hints and find nemo (((: "+"\n";
-            newContent += "Good Luck !";
+            newContent += "Active Time" + "\n";
+            newContent += string.Join(" // ", timeRecord.timeLog) + "\n";
+            newContent += "Inactive Time" + "\n";
+            newContent += string.Join(" // ", timeRecord.inActiveLog);
         }
-        
+        else if (!logic.isLogging)
+        {
+            newContent += "Welcome to Finding Nemo!" + "\n";
+            newContent += "Press A to start !";
+        }
+        else if (logic.isLogging)
+        {
+            newContent += "Go! Follow the different types of hints and find nemo (((:";
 
+        }
         content.text = newContent;
 
         // DEBUG CODE - not importnat
@@ -63,4 +76,5 @@ public class TextManager : MonoBehaviour
             lastSwitched = Time.time;
         }
     }
+
 }

@@ -8,7 +8,8 @@ public enum CustomControls
     TutorialSwitch = OVRInput.Button.Three,
     //
     NextPreset = OVRInput.Button.Two,
-    ChoosePreset = OVRInput.Button.Four
+    ChoosePreset = OVRInput.Button.Four,
+    StartLog = OVRInput.Button.One
     //Old controls
     //Jump = OVRInput.Button.One,
     //LocoSwitch = OVRInput.Button.Two,

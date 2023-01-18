@@ -12,18 +12,19 @@ public class Logic : MonoBehaviour
     private Transform playerTrans;
     public Transform targetTrans;
 
-    private Vector3 playerStartPos;
+    public Vector3 playerStartPos;
 
-    
     private float keyLastPressed;
+    // private float startTime;
 
     public int currLvlNumb { private set; get; } = 0;
     public int presetActive { private set; get; } = 1;
     public List<int> lvlOrder { private set; get; }
 
     public bool isExperFinished { private set; get; }
+    public bool isLogging { private set; get; }
 
-    
+
 
 
     // static public variables can be accesed from anywhere
@@ -46,7 +47,8 @@ public class Logic : MonoBehaviour
         targetPos = targetTrans.position;
         // players start position
         playerStartPos = playerTrans.position;
-
+        // time log
+        isLogging = false;
         // Save pointers to feedback objects
         visualFeedback = GameObject.Find("VisualFeedbackObj").GetComponent<VisualFeedback>();
         audioFeedback = GameObject.Find("AudioFeedbackObj").GetComponent<AudioFeedback>();
@@ -67,9 +69,13 @@ public class Logic : MonoBehaviour
         if (isExperFinished) { return; }
 
         bool isKeyCoolDownOver = (Time.time - keyLastPressed) > 0.6f;
-            
+
+        // Start logging time
+        if (Input.GetKeyUp(KeyCode.O) && (currLvlNumb != 0)) { isLogging = true; }
+        if (OVRInput.GetUp((OVRInput.Button)CustomControls.StartLog)) { isLogging = true; }
+
         // lvl 0 - choosing preset 
-        if(currLvlNumb == 0 && isKeyCoolDownOver)
+        if (currLvlNumb == 0 && isKeyCoolDownOver)
         {
             if ( OVRInput.Get((OVRInput.Button)CustomControls.NextPreset) )
             {
@@ -78,6 +84,7 @@ public class Logic : MonoBehaviour
                 if (presetActive > 6) { presetActive = 1; }
                 LoadLvlPreset();
             }
+            //else if ( Input.GetKey(KeyCode.P) )
             else if ( OVRInput.Get((OVRInput.Button)CustomControls.ChoosePreset) )
             {
                 isLvlCompleted = true;
@@ -92,7 +99,11 @@ public class Logic : MonoBehaviour
         angleToRotTarget = Vector3.Angle(targetOrientation, currentOrientation);
 
         //Close enough to the target - lvl completed
-        if (currLvlNumb > 0 &&  distanceToTarget < 3f) { isLvlCompleted = true; }
+        if (currLvlNumb > 0 &&  distanceToTarget < 3f)
+        {
+            isLvlCompleted = true;
+            isLogging = false;
+        }
 
         //Current level is finished
         if(isLvlCompleted)
@@ -113,6 +124,7 @@ public class Logic : MonoBehaviour
                 lvlOrder.RemoveAt(0);
                 // teleport player to start position
                 playerTrans.position = playerStartPos;
+                // restart timer
                 UpdateFeedbackForm(currLvlNumb);
             }
         }
@@ -132,32 +144,67 @@ public class Logic : MonoBehaviour
         // enable proper feedback forms
         switch (lvlNumb)
         {
+            // Knife
             case 1:
-                targetTrans.position = new Vector3(-4.93f, 5.42f, -60.33f);
+                targetTrans.position = new Vector3(-60.4f, 4.2f, -71.4f);
                 targetPos = targetTrans.position;
                 visualFeedback.gameObject.SetActive(true);
                 break;
+
+            // Audio
             case 2:
-                targetTrans.position = new Vector3(-67.8f, 3.718f, -29.9f);
+                targetTrans.position = new Vector3(-66.5f, 4.2f, -37.5f);
                 targetPos = targetTrans.position;
-                //visualFeedback.gameObject.SetActive(true);
                 audioFeedback.gameObject.SetActive(true);
                 break;
+
+            // Haptic
             case 3:
-                targetTrans.position = new Vector3(-84.8f, 3.718f, -84.8f);
+                targetTrans.position = new Vector3(-4.48f, 5.64f, -61.31f);
                 targetPos = targetTrans.position;
-                //visualFeedback.gameObject.SetActive(true);
+                hapticFeedback.gameObject.SetActive(true);
+                break;
+
+            // Brightness
+            case 4:
+                targetTrans.position = new Vector3(54.864f, 3.61f, 19.76f);
+                targetPos = targetTrans.position;
+                brightnessFeedback.gameObject.SetActive(true);
+                break;
+
+            // Audio + Haptic
+            case 5:
+                targetTrans.position = new Vector3(-75.34f, 2.97f, 28.11f);
+                targetPos = targetTrans.position;
                 audioFeedback.gameObject.SetActive(true);
                 hapticFeedback.gameObject.SetActive(true);
                 break;
-            case 4:
-                targetTrans.position = new Vector3(-65.028f, 4.41f, 69.42f);
+
+            // Audio + Brightness
+            case 6:
+                targetTrans.position = new Vector3(-64.04f, 2.97f, 64.691f);
                 targetPos = targetTrans.position;
-                //visualFeedback.gameObject.SetActive(true);
+                audioFeedback.gameObject.SetActive(true);
+                brightnessFeedback.gameObject.SetActive(true);
+                break;
+
+            // Haptic + Brightness
+            case 7:
+                targetTrans.position = new Vector3(-94.97f, 2.97f, 87.3f);
+                targetPos = targetTrans.position;
+                hapticFeedback.gameObject.SetActive(true);
+                brightnessFeedback.gameObject.SetActive(true);
+                break;
+
+            // Audio + Haptic + Brightness
+            case 8:
+                targetTrans.position = new Vector3(-88.26f, 3.446f, 22.42f);
+                targetPos = targetTrans.position;
                 audioFeedback.gameObject.SetActive(true);
                 hapticFeedback.gameObject.SetActive(true);
                 brightnessFeedback.gameObject.SetActive(true);
                 break;
+
             default:
                 break;
         }
@@ -167,23 +214,14 @@ public class Logic : MonoBehaviour
     {
         switch (presetActive)
         {
+            // Increasing disturbtion: K B H A BH BA HA AHB
             case 1:
-                lvlOrder = new List<int> { 1, 2, 3, 4 };
+                lvlOrder = new List<int> { 1, 4, 3, 2, 7, 6, 5, 8};
                 break;
+
+            // Decreasing disturbtion: K AHB HA BA BH A H B      
             case 2:
-                lvlOrder = new List<int> { 2, 3, 1, 4 };
-                break;
-            case 3:
-                lvlOrder = new List<int> { 3, 1, 4, 2 };
-                break;
-            case 4:
-                lvlOrder = new List<int> { 4, 1, 2, 3 };
-                break;
-            case 5:
-                lvlOrder = new List<int> { 1, 3, 4, 2 };
-                break;
-            case 6:
-                lvlOrder = new List<int> { 2, 4, 1, 3 };
+                lvlOrder = new List<int> { 1, 8, 5, 6, 7, 2, 3, 4, 1};
                 break;
         }
     }

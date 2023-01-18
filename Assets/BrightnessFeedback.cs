@@ -8,24 +8,24 @@ public class BrightnessFeedback : MonoBehaviour
     public Light directionalLight;
     public float IntensityInterval;
     public Transform lightPos;
+    public float distance;
+    public Logic logic;
 
     // Start is called before the first frame update
     void Start()
     {
         directionalLight.intensity = 1;
+        logic = GameObject.Find("ExperimentLogic").GetComponent<Logic>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float d = Logic.distanceToTarget;
-        directionalLight.intensity = 1.5f * IntensityInterval - d / 130 * IntensityInterval;
+        lightPos.position = logic.targetTrans.position;
+        distance = Vector3.Distance(logic.targetTrans.position, logic.playerStartPos);
+        directionalLight.intensity = 1.5f * IntensityInterval - d / distance * IntensityInterval;
 
-    }
-
-    private void OnEnable()
-    {
-        lightPos.position = new Vector3(-65.028f, 4.41f, 69.42f);
     }
 
     private void OnDisable()

@@ -27,23 +27,23 @@ public class SimpleCapsuleWithStickMovement : MonoBehaviour
 		if (CameraRig == null) CameraRig = GetComponentInChildren<OVRCameraRig>();
 	}
 
-	void Start ()
+	void Start()
 	{
-		
+
 	}
-	
+
 	private void FixedUpdate()
 	{
-        if (CameraUpdated != null) CameraUpdated();
-        if (PreCharacterMove != null) PreCharacterMove();
+		if (CameraUpdated != null) CameraUpdated();
+		if (PreCharacterMove != null) PreCharacterMove();
 
-        if (HMDRotatesPlayer) RotatePlayerToHMD();
+		if (HMDRotatesPlayer) RotatePlayerToHMD();
 		if (EnableLinearMovement) StickMovement();
 		if (EnableRotation) SnapTurn();
 	}
 
-    void RotatePlayerToHMD()
-    {
+	void RotatePlayerToHMD()
+	{
 		Transform root = CameraRig.trackingSpace;
 		Transform centerEye = CameraRig.centerEyeAnchor;
 
@@ -54,7 +54,7 @@ public class SimpleCapsuleWithStickMovement : MonoBehaviour
 
 		root.position = prevPos;
 		root.rotation = prevRot;
-    }
+	}
 
 	void StickMovement()
 	{
@@ -72,14 +72,14 @@ public class SimpleCapsuleWithStickMovement : MonoBehaviour
 		//_rigidbody.MovePosition(_rigidbody.position + moveDir * Speed * Time.fixedDeltaTime);
 		float y = _rigidbody.velocity.y;
 
-		_rigidbody.velocity = moveDir * (Speed *20) * Time.fixedDeltaTime;
+		_rigidbody.velocity = moveDir * (Speed * 20) * Time.fixedDeltaTime;
 
 		_rigidbody.velocity += new Vector3(0, y, 0);
 
 		bool isJumpCoolDownOver = Time.time - lastJumped > 1;
 		if (OVRInput.Get((OVRInput.Button)CustomControls.Jump) && _rigidbody.velocity.y <= 0)
 		{
-			_rigidbody.AddForce(Vector3.up * 100 *6, ForceMode.Impulse);
+			_rigidbody.AddForce(Vector3.up * 100 * 6, ForceMode.Impulse);
 			lastJumped = Time.time;
 		}
 

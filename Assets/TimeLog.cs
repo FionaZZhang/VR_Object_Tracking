@@ -36,7 +36,7 @@ public class TimeLog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.O) && (!isStart) && (logic.currLvlNumb != 0))
+        if (OVRInput.GetUp((OVRInput.Button)CustomControls.StartLog) && (!isStart) && (logic.currLvlNumb != 0))
         {
             startTime = Time.time;
             isStart = true;

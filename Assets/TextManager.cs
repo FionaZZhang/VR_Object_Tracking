@@ -52,6 +52,9 @@ public class TextManager : MonoBehaviour
         }
         else if (!logic.isLogging)
         {
+            isTutorialActive = true;
+            background.enabled = true;
+            tutorialTxt.SetActive(true);
             newContent += "Welcome to Finding Nemo!" + "\n";
             newContent += "Press A to start !";
         }
@@ -66,14 +69,14 @@ public class TextManager : MonoBehaviour
         //content.text += "Amplitude: " + HapticFeedback.vibAmplitude.ToString()+ "\n";
         //content.text += "Frequency: " + HapticFeedback.vibFrquency.ToString()+ "\n";
 
-        bool isCooldownOver = Time.time - lastSwitched > 0.5;
+        // bool isCooldownOver = Time.time - lastSwitched > 0.5;
 
-        if(OVRInput.Get((OVRInput.Button)CustomControls.TutorialSwitch) && isCooldownOver)
+        if(OVRInput.GetUp((OVRInput.Button)CustomControls.TutorialSwitch)) //&& isCooldownOver)
         {
             isTutorialActive = !isTutorialActive;
             background.enabled = isTutorialActive;
             tutorialTxt.SetActive(isTutorialActive);
-            lastSwitched = Time.time;
+            //lastSwitched = Time.time;
         }
     }
 

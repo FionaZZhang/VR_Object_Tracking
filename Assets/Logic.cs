@@ -71,8 +71,8 @@ public class Logic : MonoBehaviour
         bool isKeyCoolDownOver = (Time.time - keyLastPressed) > 0.6f;
 
         // Start logging time
-        if (Input.GetKeyUp(KeyCode.O) && (currLvlNumb != 0)) { isLogging = true; }
-        if (OVRInput.GetUp((OVRInput.Button)CustomControls.StartLog)) { isLogging = true; }
+        // if (Input.GetKeyUp(KeyCode.O) && (currLvlNumb != 0)) { isLogging = true; }
+        if (OVRInput.GetUp((OVRInput.Button)CustomControls.StartLog) && currLvlNumb != 0) { isLogging = true; }
 
         // lvl 0 - choosing preset 
         if (currLvlNumb == 0 && isKeyCoolDownOver)
@@ -81,7 +81,7 @@ public class Logic : MonoBehaviour
             {
                 keyLastPressed = Time.time;
                 presetActive += 1;
-                if (presetActive > 6) { presetActive = 1; }
+                if (presetActive > 2) { presetActive = 1; }
                 LoadLvlPreset();
             }
             //else if ( Input.GetKey(KeyCode.P) )
@@ -126,6 +126,15 @@ public class Logic : MonoBehaviour
                 playerTrans.position = playerStartPos;
                 // restart timer
                 UpdateFeedbackForm(currLvlNumb);
+            }
+        }
+
+        // Skip this level
+        if (currLvlNumb > 0 && isLogging)
+        {
+            if (OVRInput.GetUp((OVRInput.Button)CustomControls.SkipLvl))
+            {
+                playerTrans.position = targetTrans.position;
             }
         }
 
@@ -174,7 +183,7 @@ public class Logic : MonoBehaviour
 
             // Audio + Haptic
             case 5:
-                targetTrans.position = new Vector3(-75.34f, 2.97f, 28.11f);
+                targetTrans.position = new Vector3(-67.53f, 2.97f, 35.75f);
                 targetPos = targetTrans.position;
                 audioFeedback.gameObject.SetActive(true);
                 hapticFeedback.gameObject.SetActive(true);
@@ -190,7 +199,7 @@ public class Logic : MonoBehaviour
 
             // Haptic + Brightness
             case 7:
-                targetTrans.position = new Vector3(-94.97f, 2.97f, 87.3f);
+                targetTrans.position = new Vector3(85.188f, 3.446f, -57.6f);
                 targetPos = targetTrans.position;
                 hapticFeedback.gameObject.SetActive(true);
                 brightnessFeedback.gameObject.SetActive(true);
@@ -198,7 +207,7 @@ public class Logic : MonoBehaviour
 
             // Audio + Haptic + Brightness
             case 8:
-                targetTrans.position = new Vector3(-88.26f, 3.446f, 22.42f);
+                targetTrans.position = new Vector3(-62.99f, 3.446f, 20.69f);
                 targetPos = targetTrans.position;
                 audioFeedback.gameObject.SetActive(true);
                 hapticFeedback.gameObject.SetActive(true);
@@ -221,7 +230,7 @@ public class Logic : MonoBehaviour
 
             // Decreasing disturbtion: K AHB HA BA BH A H B      
             case 2:
-                lvlOrder = new List<int> { 1, 8, 5, 6, 7, 2, 3, 4, 1};
+                lvlOrder = new List<int> { 1, 8, 5, 6, 7, 2, 3, 4};
                 break;
         }
     }

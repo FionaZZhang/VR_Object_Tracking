@@ -9,7 +9,8 @@ public enum CustomControls
     //
     NextPreset = OVRInput.Button.Two,
     ChoosePreset = OVRInput.Button.Four,
-    StartLog = OVRInput.Button.One
+    StartLog = OVRInput.Button.One,
+    SkipLvl = OVRInput.Button.PrimaryIndexTrigger
     //Old controls
     //Jump = OVRInput.Button.One,
     //LocoSwitch = OVRInput.Button.Two,

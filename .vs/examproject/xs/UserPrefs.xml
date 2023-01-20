@@ -1,16 +1,17 @@
 ﻿<Properties StartupConfiguration="{E46D7379-0197-7435-314D-B2C7F25BE0BC}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Logic.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/AudioFeedback.cs">
     <Files>
-      <File FileName="Assets/TimeLog.cs" Line="36" Column="39" />
-      <File FileName="Assets/Logic.cs" Line="176" Column="1" />
-      <File FileName="Assets/AudioFeedback.cs" />
+      <File FileName="Assets/TimeLog.cs" Line="1" Column="1" />
+      <File FileName="Assets/Logic.cs" />
+      <File FileName="Assets/AudioFeedback.cs" Line="1" Column="1" />
       <File FileName="Assets/VisualFeedback.cs" />
-      <File FileName="Assets/BrightnessFeedback.cs" Line="1" Column="1" />
-      <File FileName="Assets/CustomControls.cs" Line="11" Column="41" />
-      <File FileName="Assets/TextManager.cs" Line="66" Column="31" />
-      <File FileName="Assets/Move.cs" Line="1" Column="1" />
-      <File FileName="Assets/LocomotionSwitch.cs" Line="1" Column="1" />
-      <File FileName="Assets/Oculus/SampleFramework/Core/Locomotion/Scripts/SimpleCapsuleWithStickMovement.cs" Line="113" Column="2" />
+      <File FileName="Assets/BrightnessFeedback.cs" />
+      <File FileName="Assets/CustomControls.cs" />
+      <File FileName="Assets/TextManager.cs" />
+      <File FileName="Assets/Move.cs" />
+      <File FileName="Assets/LocomotionSwitch.cs" />
+      <File FileName="Assets/Oculus/SampleFramework/Core/Locomotion/Scripts/SimpleCapsuleWithStickMovement.cs" />
+      <File FileName="Assets/HapticFeedback.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,7 +27,7 @@
                   </Node>
                 </Node>
               </Node>
-              <Node name="Logic.cs" selected="True" />
+              <Node name="TimeLog.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -35,7 +36,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4c3b6e87-1547-4ae1-bb58-3a74c39eb1ce" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9b453b24-4a3c-4140-b452-22d7d6a2bd88" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

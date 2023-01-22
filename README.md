@@ -13,6 +13,6 @@ There are eight levels which uses different feedback methods.
 Use the left joystick to move in four directions: front, back, left, and right. Use the right joystick to rotate.
 
 ### Button control
-'B' to select the order of preset, 'X' to confirm the selected order, 'Y' to show/hide the canvas, 'A' is overloaded: it starts the time log in the staging phase of each level, and is the button for jumping when the level starts, and 'Left Index Trigger' is to skip this level
+'B' to select the order of preset, 'Y' to confirm the selected order, 'X' to show/hide the canvas, 'A' is overloaded: it starts the time log in the staging phase of each level, and is the button for jumping when the level starts, and 'Left Index Trigger' is to skip this level
 
 

@@ -1,4 +1,5 @@
 # Project: Finding Nemo (Group 19)
+Project showcase: https://www.vr-ku.dk/vr-course/selected-projects/finding-nemo-in-vr
 This simple game is for investigating the efficiency of different feedback approach: visual cue, haptic cue, and auditory cue.
 
 # Authors
